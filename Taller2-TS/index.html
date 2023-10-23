@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Listado de series</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  </head>
+  <body>
+    <div style = "height: 3%; background-color: #24A2B8; font-family: Arial, Helvetica, sans-serif; font-size: large;"><img src="https://pbs.twimg.com/profile_images/993674618652254208/dYmlscab_400x400.jpg" alt="logo" style = "max-height: 3%; max-width: 3%; margin: 0.75%;">TV SERIES</div>
+    <div style="width: 50%; margin: 1.25% 3% 3% 3%;">
+      <div class="row">
+        <div class="col-8">
+        <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Channel</th>
+            <th scope="col">Seasons</th>
+          </tr>
+        </thead>
+        <tbody style="background-color:#F2F2F2;" id = "series"></tbody>
+            <tr>
+                <td colspan="4" id = "promedio" style="width: 100%; margin: 4%; white-space: nowrap;"></td>
+            </tr>
+      </table>
+    </div>
+    <div class="col-4">
+  <div class="card" style="width: 18rem;">
+    <img class="card-img-top" id = "imagen" src="" style="max-width: 100%;">
+    <div class="card-body">
+      <h5 class="card-title" id = "titulo"></h5>
+      <p class="card-text" id = "descripcion"></p>
+      <a href="" class="btn btn-primary" id = "paginaWeb"></a>
+    </div>
+  </div>
+  </div>
+  </div>
+</div>
+<style>
+  .card {
+  display: none;
+}
+</style>
+<script type="module" src="./scripts/main.js"></script>
+<script type="module" src="./scripts/data.js"></script>
+<script type="module" src="./scripts/Serie.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
