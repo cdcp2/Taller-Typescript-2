@@ -1,61 +1,48 @@
-import {Serie} from './Serie.js';
+import { Serie } from './Serie.js';
 import { series } from './data.js';
 
-let component: HTMLElement = document.getElementById('series')!;
-let componentavg: HTMLElement = document.getElementById('promedio')!;
-let image:HTMLElement = document.getElementById('imagen')!;
-let title:HTMLElement = document.getElementById('titulo')!;
-let description: HTMLElement = document.getElementById('descripcion')!;
-let webPage: HTMLElement = document.getElementById('paginaWeb')!;
+const component = document.getElementById('series')!;
+const componentavg = document.getElementById('promedio')!;
+const image = document.getElementById('imagen')!;
+const title = document.getElementById('titulo')!;
+const description = document.getElementById('descripcion')!;
+const webPage = document.getElementById('paginaWeb')!;
 
-series.forEach(e => createRow(e));
-componentavg.innerHTML = `Seasons average: ${avg()}`;
-createBtn();
-
-function createRow(serie: Serie):void{
-    let row = document.createElement('tr');
-    row.innerHTML = (`
-    <td style = "font-weight: bold;"> 
-        ${serie.id}
-    </td>
-    <td style = "color:#547dde;">
-        <a id = "${serie.id}">${serie.name}</a>
-    </td>
-    <td>
-        ${serie.station}
-    </td>
-    <td>
-        ${serie.seasons}
-    </td>`);
+function createRow(serie: Serie): void {
+    const row = document.createElement('tr');
+    row.innerHTML = `
+        <td style="font-weight: bold;">${serie.id}</td>
+        <td style="color:#547dde;"><a id="${serie.id}">${serie.name}</a></td>
+        <td>${serie.station}</td>
+        <td>${serie.seasons}</td>
+    `;
     component.appendChild(row);
 }
 
-function alterCard(id: string){
-    let idR: number = parseInt(id);
-    let serie: Serie = series[idR - 1];
+function alterCard(id: number): void {
+    const serie = series[id - 1];
     image.setAttribute('src', serie.image);
-    title.innerHTML = `${serie.name}`;
-    description.innerHTML = `${serie.description}`;
-    webPage.setAttribute('href', `${serie.webPage}`);
+    title.innerHTML = serie.name;
+    description.innerHTML = serie.description;
+    webPage.setAttribute('href', serie.webPage);
     webPage.innerHTML = 'Página Web';
-    const card = document.querySelector('.card');
-    if (card && card.classList.contains('card')) {
-    (card as HTMLElement).style.display = 'block';
-    }
-
+    const card = document.querySelector('.card') as HTMLElement;
+    if (card) card.style.display = 'block';
 }
 
-
-function createBtn(){
-    series.forEach(e=>{
-        let btn = document.getElementById(`${e.id}`)!;
-        btn.onclick = () => {alterCard(btn.id)};
+function createBtn(): void {
+    series.forEach(serie => {
+        const btn = document.getElementById(`${serie.id}`)!;
+        btn.addEventListener('click', () => alterCard(serie.id));
     });
 }
 
-function avg(): string{
-    let avg = 0;
-    series.forEach(s => avg += s.seasons);
-    avg /= series.length;
-    return Math.round(avg).toString();
+function avg(): string {
+    const averageSeasons = series.reduce((acc, serie) => acc + serie.seasons, 0) / series.length;
+    return Math.round(averageSeasons).toString();
 }
+
+
+series.forEach(serie => createRow(serie));
+componentavg.innerHTML = `Seasons average: ${avg()}`;
+createBtn();
